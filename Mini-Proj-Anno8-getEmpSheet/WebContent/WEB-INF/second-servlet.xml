@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+      
+      <bean id="dss" class="org.springframework.jndi.JndiObjectFactoryBean">
+     <property name="jndiName" value="java:/comp/env/dsjndi"></property>
+ </bean>
+       <bean id="ff" class="org.springframework.jdbc.core.JdbcTemplate">
+       <constructor-arg ref="dss"></constructor-arg>
+       </bean>
+    
+      <bean id="kpl" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+      </bean>
+      <bean id="jop" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pager/"/>
+        <property name="suffix" value=".jsp"/>
+      </bean>
+      <context:component-scan base-package="com.spring"></context:component-scan>
+</beans>
