@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+ <bean id="ipo" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+ 
+ <bean id="jpl" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <property name="prefix" value="/WEB-INF/pager/"/>
+ <property name="suffix" value=".jsp"/>
+ </bean>
+ <bean id="dss" class="org.springframework.jndi.JndiObjectFactoryBean">
+ <property name="jndiName" value="java:/comp/env/dsjndi"></property>
+ </bean>
+<!--  <bean id="hikari" class="com.zaxxer.hikari.HikariDataSource"> -->
+<!--  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/> -->
+<!--  <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/emp"/> -->
+<!--  <property name="username" value="root"/> -->
+<!--  <property name="password" value="root"/> -->
+<!--  </bean> -->
+ 
+ <bean id="fgg" class="org.springframework.jdbc.core.JdbcTemplate">
+ <constructor-arg ref="dss"/>
+ </bean>
+<!--  <bean id="kmll" class="com.spring.DAO.DAOimpl"> -->
+<!--  <constructor-arg ref="fgg"/> -->
+<!--  </bean> -->
+ 
+ <context:component-scan base-package="com.spring"></context:component-scan>
+
+</beans>
